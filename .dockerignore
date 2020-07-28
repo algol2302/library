@@ -1,0 +1,10 @@
+!docker/nginx/conf/nginx.conf
+data
+media
+
+backend/src/.venv
+
+static_files
+frontend/node_modules
+frontend/static
+

@@ -1,0 +1,55 @@
+version: "3.7"
+
+services:
+    mongo:
+        image: mongo
+        env_file:
+            - local.env
+        volumes:
+            - ./data-db:/data-db
+        ports:
+            - 27017:27017
+        restart: always
+
+    mongo-express:
+        image: mongo-express
+        restart: always
+        ports:
+            - 8081:8081
+        env_file:
+            - local.env
+
+#    backend:
+#        image: algol2302/library
+#        container_name: backend
+#        env_file:
+#            - prod.env
+#        build:
+#            context: ./backend
+#            dockerfile: Dockerfile
+#        command: bash /gunicorn_run.sh
+#        ports:
+#            - "8000:8000"
+#        volumes:
+#            - ./data/media:/app/media
+#            - ./backend/src:/app
+#        depends_on:
+#            - mongo
+#        restart: always
+#
+#    nginx:
+#        image: nginx:1.19-alpine
+#        container_name: nginx
+#        env_file:
+#            - prod.env
+#        build:
+#            context: ./nginx
+#            dockerfile: Dockerfile
+#        volumes:
+#            - ./data/media:/app/media:ro
+#            - ./nginx/conf/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+#        ports:
+#            - 80:80
+#        depends_on:
+#            - backend
+#        restart: always

@@ -1,0 +1,2 @@
+django<4.0.0,>=3.0.8
+graphene-django<3.0.0,>=2.12.1
