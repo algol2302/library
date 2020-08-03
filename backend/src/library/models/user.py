@@ -37,6 +37,15 @@ class UserManager(BaseUserManager):
 
         return self._create_user(email, password, **extra_fields)
 
+    def get_by_id(self, id=None):
+        """
+        Get a user by ID
+        """
+        if not id:
+            raise ValueError(_('An ID is required'))
+
+        return self.get(id=id)
+
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     """Overridden User model"""
