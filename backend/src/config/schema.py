@@ -9,4 +9,12 @@ class Query(library.schema.Query, graphene.ObjectType):
     pass
 
 
-schema = graphene.Schema(query=Query)
+class Mutation(library.schema.Mutation, graphene.ObjectType):
+    """
+    Projects main Mutation class, this will
+    inherit multiple mutations.
+    """
+    pass
+
+
+schema = graphene.Schema(query=Query, mutation=Mutation)
